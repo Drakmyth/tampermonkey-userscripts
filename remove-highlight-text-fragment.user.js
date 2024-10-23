@@ -1,13 +1,13 @@
 // ==UserScript==
 // @name         Remove Highlight Text Fragment
-// @namespace    https://github.com/Drakmyth/remove-highlight-text-fragment
+// @namespace    https://github.com/Drakmyth/tampermonkey-userscripts
 // @version      0.1
 // @author       Drakmyth
 // @description  A Tampermonkey userscript to automatically remove highlight fragments from Google/Bing search results
-// @homepage     https://github.com/Drakmyth/remove-highlight-text-fragment
-// @updateURL    https://github.com/Drakmyth/remove-highlight-text-fragment/raw/master/remove-highlight-text-fragment.user.js
-// @downloadURL  https://github.com/Drakmyth/remove-highlight-text-fragment/raw/master/remove-highlight-text-fragment.user.js
-// @supportURL   https://github.com/Drakmyth/remove-highlight-text-fragment/issues
+// @homepage     https://github.com/Drakmyth/tampermonkey-userscripts
+// @updateURL    https://github.com/Drakmyth/tampermonkey-userscripts/raw/master/remove-highlight-text-fragment.user.js
+// @downloadURL  https://github.com/Drakmyth/tampermonkey-userscripts/raw/master/remove-highlight-text-fragment.user.js
+// @supportURL   https://github.com/Drakmyth/tampermonkey-userscripts/issues?q=is%3Aopen+is%3Aissue+label%3Aremove-highlight-text-fragment
 // @license      MIT
 // @match        *://*/*
 // @run-at       document-start

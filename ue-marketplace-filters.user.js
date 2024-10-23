@@ -1,13 +1,13 @@
 // ==UserScript==
 // @name         Unreal Engine Marketplace Additional Asset Filters
-// @namespace    https://github.com/Drakmyth/ue-marketplace-filters
+// @namespace    https://github.com/Drakmyth/tampermonkey-userscripts
 // @version      0.1
 // @author       Drakmyth
 // @description  A Tampermonkey userscript to add additional asset filters to the Unreal Engine Marketplace
-// @homepage     https://github.com/Drakmyth/ue-marketplace-filters
-// @updateURL    https://github.com/Drakmyth/ue-marketplace-filters/raw/master/ue-marketplace-filters.user.js
-// @downloadURL  https://github.com/Drakmyth/ue-marketplace-filters/raw/master/ue-marketplace-filters.user.js
-// @supportURL   https://github.com/Drakmyth/ue-marketplace-filters/issues
+// @homepage     https://github.com/Drakmyth/tampermonkey-userscripts
+// @updateURL    https://github.com/Drakmyth/tampermonkey-userscripts/raw/master/ue-marketplace-filters.user.js
+// @downloadURL  https://github.com/Drakmyth/tampermonkey-userscripts/raw/master/ue-marketplace-filters.user.js
+// @supportURL   https://github.com/Drakmyth/tampermonkey-userscripts/issues?q=is%3Aopen+is%3Aissue+label%3Aue-marketplace-filters
 // @license      MIT
 // @match        https://www.unrealengine.com/marketplace/*
 // @run-at       document-body
