@@ -1,15 +1,15 @@
 // ==UserScript==
-// @name         Unreal Engine Marketplace Additional Asset Filters
+// @name         FAB.com Additional Asset Filters
 // @namespace    https://github.com/Drakmyth/tampermonkey-userscripts
-// @version      0.1
+// @version      0.2
 // @author       Drakmyth
-// @description  A Tampermonkey userscript to add additional asset filters to the Unreal Engine Marketplace
+// @description  A Tampermonkey userscript to add additional asset filters to FAB.com (formerly the Unreal Engine Marketplace)
 // @homepage     https://github.com/Drakmyth/tampermonkey-userscripts
 // @updateURL    https://github.com/Drakmyth/tampermonkey-userscripts/raw/master/ue-marketplace-filters.user.js
 // @downloadURL  https://github.com/Drakmyth/tampermonkey-userscripts/raw/master/ue-marketplace-filters.user.js
 // @supportURL   https://github.com/Drakmyth/tampermonkey-userscripts/issues?q=is%3Aopen+is%3Aissue+label%3Aue-marketplace-filters
 // @license      MIT
-// @match        https://www.unrealengine.com/marketplace/*
+// @match        https://www.fab.com/search*
 // @run-at       document-body
 // @grant        none
 // ==/UserScript==
@@ -18,47 +18,65 @@
     `use strict`;
 
     var hideOwned = false;
-    var hideExternal = false;
 
     function doControlsExist() {
         var sortContainer = getSortContainer();
-        return sortContainer.querySelector(`span.filter-controls`);
+        return sortContainer.querySelector(`.tmnky-custom-control`);
     }
 
     function addControls() {
-        var controlsElement = document.createElement(`span`);
-        controlsElement.className = `filter-controls`;
-
-        var hideOwnedCheckbox = createCheckbox(`Hide Owned`, hideOwned, toggleHideOwned);
-        controlsElement.appendChild(hideOwnedCheckbox);
-
-        var hideExternalCheckbox = createCheckbox(`Hide External`, hideExternal, toggleHideExternal);
-        controlsElement.appendChild(hideExternalCheckbox);
+        var hideOwnedCheckbox = createCheckbox(`Hide Owned Assets`, hideOwned, toggleHideOwned);
 
         var sortContainer = getSortContainer();
-        sortContainer.appendChild(controlsElement);
+        var onSaleCheckbox = sortContainer.querySelector(`:nth-child(4)`)
+
+        if (onSaleCheckbox && onSaleCheckbox.parentElement === sortContainer) {
+            sortContainer.insertBefore(hideOwnedCheckbox, onSaleCheckbox);
+        }
     }
 
     function getSortContainer() {
-        return document.getElementsByClassName(`sort-select`)[0];
+        return document.getElementsByClassName(`fabkit-Surface-root`)[0].childNodes[0];
     }
 
     function createCheckbox(text, initial, onChange) {
-        var labelElement = document.createElement(`label`);
-        labelElement.style.marginLeft = `5px`;
-        labelElement.style.marginRight = `5px`;
+        var checkboxAccordionHeaderContainer = document.createElement(`h2`);
+        checkboxAccordionHeaderContainer.className = `fabkit-Accordion-headerContainer tmnky-custom-control`;
+
+        var checkboxAccordionHeader = document.createElement(`label`);
+        checkboxAccordionHeader.className = `fabkit-Accordion-header`;
+        var textElement = document.createTextNode(text);
+        checkboxAccordionHeader.appendChild(textElement);
+        checkboxAccordionHeaderContainer.appendChild(checkboxAccordionHeader);
+
+        var checkboxAccordionHeaderRight = document.createElement(`div`);
+        checkboxAccordionHeaderRight.className = `fabkit-Accordion-headerRight`;
+        checkboxAccordionHeader.appendChild(checkboxAccordionHeaderRight);
+
+        var checkboxSwitchRoot = document.createElement(`div`);
+        checkboxSwitchRoot.className = `fabkit-Switch-root fabkit-Switch--sm`;
+        checkboxAccordionHeaderRight.appendChild(checkboxSwitchRoot)
 
         var checkboxElement = document.createElement(`input`);
         checkboxElement.type = `checkbox`;
+        checkboxElement.className = `input`;
         checkboxElement.checked = initial;
-        checkboxElement.style.marginRight = `3px`;
         checkboxElement.addEventListener(`change`, onChange);
-        labelElement.appendChild(checkboxElement);
+        checkboxSwitchRoot.appendChild(checkboxElement);
 
-        var textElement = document.createTextNode(text);
-        labelElement.appendChild(textElement);
+        var checkboxSwitchWrapperElement = document.createElement(`div`);
+        checkboxSwitchWrapperElement.className = `fabkit-Switch-wrapper`;
+        checkboxSwitchRoot.appendChild(checkboxSwitchWrapperElement);
 
-        return labelElement;
+        var checkboxSwitchHandle = document.createElement(`div`);
+        checkboxSwitchHandle.className = `fabkit-Switch-handle`;
+        checkboxSwitchWrapperElement.appendChild(checkboxSwitchHandle);
+
+        return checkboxAccordionHeaderContainer;
+    }
+
+    function getAssetContainers() {
+        return document.querySelectorAll(`.fabkit-ResultGrid-root>li`);
     }
 
     function toggleHideOwned(event) {
@@ -66,17 +84,9 @@
         onBodyChange();
     }
 
-    function toggleHideExternal(event) {
-        hideExternal = event.target.checked;
-        onBodyChange();
-    }
-
     function isContainerOwned(container) {
-        return container.querySelector(`article.asset--owned`);
-    }
-
-    function isContainerExternal(container) {
-        return !container.querySelector(`span.btn`);
+        var ownedLabel = container.querySelector(`div>div:nth-child(2)>div:nth-child(2)`);
+        return ownedLabel.innerText === `Owned`;
     }
 
     function onBodyChange(mut) {
@@ -85,19 +95,17 @@
             addControls();
         }
 
-        var assetContainers = document.getElementsByClassName(`asset-container`);
+        var assetContainers = getAssetContainers();
 
         for (let container of assetContainers) {
             var isOwned = isContainerOwned(container);
-            var isExternal = isContainerExternal(container);
-            if ((hideOwned && isOwned) || (hideExternal && isExternal)) {
+            if (hideOwned && isOwned) {
                 container.style.display = `none`;
             } else {
                 container.style.display = null;
             }
         }
     }
-
 
     var mo = new MutationObserver(onBodyChange);
     mo.observe(document.body, {childList: true, subtree: true});

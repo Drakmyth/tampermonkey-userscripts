@@ -21,14 +21,17 @@ It's against Steam's terms of service to utilize different currencies in order t
 
 A toggle button has been added next to the currency selector in case you do want to see them all.
 
-## Unreal Engine Marketplace Additional Asset Filters [![Other](https://img.shields.io/badge/dynamic/json?style=social&label=Greasy%20Fork&query=total_installs&url=https%3A%2F%2Fgreasyfork.org%2F%2Fen%2Fscripts%2F420295-unreal-engine-marketplace-additional-asset-filters.json&logo=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH3ggEBCQHM3fXsAAAAVdJREFUOMudkz2qwkAUhc/goBaGJBgUtBCZyj0ILkpwAW7Bws4yO3AHLiCtEFD8KVREkoiFxZzX5A2KGfN4F04zMN+ce+5c4LMUgDmANYBnrnV+plBSi+FwyHq9TgA2LQpvCiEiABwMBtzv95RSfoNEHy8DYBzHrNVqVEr9BWKcqNFoxF6vx3a7zc1mYyC73a4MogBg7vs+z+czO50OW60Wt9stK5UKp9Mpj8cjq9WqDTBHnjAdxzGQZrPJw+HA31oulzbAWgLoA0CWZVBKIY5jzGYzdLtdE9DlcrFNrY98zobqOA6TJKHW2jg4nU5sNBpFDp6mhVe5rsvVasUwDHm9Xqm15u12o+/7Hy0gD8KatOd5vN/v1FozTVN6nkchxFuI6hsAAIMg4OPxMJCXdtTbR7JJCMEgCJhlGUlyPB4XfumozInrupxMJpRSRtZlKoNYl+m/6/wDuWAjtPfsQuwAAAAASUVORK5CYII=)](https://greasyfork.org/en/scripts/420295-unreal-engine-marketplace-additional-asset-filters)
+## FAB.com Additional Asset Filters [![Other](https://img.shields.io/badge/dynamic/json?style=social&label=Greasy%20Fork&query=total_installs&url=https%3A%2F%2Fgreasyfork.org%2F%2Fen%2Fscripts%2F420295-unreal-engine-marketplace-additional-asset-filters.json&logo=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH3ggEBCQHM3fXsAAAAVdJREFUOMudkz2qwkAUhc/goBaGJBgUtBCZyj0ILkpwAW7Bws4yO3AHLiCtEFD8KVREkoiFxZzX5A2KGfN4F04zMN+ce+5c4LMUgDmANYBnrnV+plBSi+FwyHq9TgA2LQpvCiEiABwMBtzv95RSfoNEHy8DYBzHrNVqVEr9BWKcqNFoxF6vx3a7zc1mYyC73a4MogBg7vs+z+czO50OW60Wt9stK5UKp9Mpj8cjq9WqDTBHnjAdxzGQZrPJw+HA31oulzbAWgLoA0CWZVBKIY5jzGYzdLtdE9DlcrFNrY98zobqOA6TJKHW2jg4nU5sNBpFDp6mhVe5rsvVasUwDHm9Xqm15u12o+/7Hy0gD8KatOd5vN/v1FozTVN6nkchxFuI6hsAAIMg4OPxMJCXdtTbR7JJCMEgCJhlGUlyPB4XfumozInrupxMJpRSRtZlKoNYl+m/6/wDuWAjtPfsQuwAAAAASUVORK5CYII=)](https://greasyfork.org/en/scripts/420295-unreal-engine-marketplace-additional-asset-filters)
 
-Adds additional asset filters to the Unreal Engine Marketplace.
+Adds additional asset filters to FAB.com (formerly the Unreal Engine Marketplace).
+
+Like its predecessor, while FAB.com offers a variety of free assets it has no way of filtering assets you own out of the search results.A checkbox has been added to the right-hand filter panel to hide any assets you already own. Note that this only works on pages that show the :white_check_mark:` Owned` indicator (which seems to not include the "Seller" pages).
+
+Unfortunately, unlike the UE Marketplace, FAB.com doesn't seem to offer the ability to add assets to your cart in bulk. Instead, you have to go into each asset one by one.
 
 ### Included Filters
 
-- Hide/Show Owned Assets
-- Hide/Show External Assets
+- Hide Owned Assets
 
 ## Issues
 If you come across something that seems like a bug, please report it here. Make sure to follow these guidelines to ensure your report isn't closed as "Invalid":
